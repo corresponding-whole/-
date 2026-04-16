@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>極楽浄土水族館 | 旬が泳ぐ、青の世界</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sea-deep: #001d3d;
+            --sea-blue: #003566;
+            --gold: #ffc300;
+            --washy-white: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--sea-deep);
+            color: var(--washy-white);
+            font-family: 'Shippori Mincho', serif;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, var(--sea-blue) 0%, var(--sea-deep) 100%);
+        }
+
+        /* 泳ぐ寿司のアニメーション */
+        .swimming-sushi {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+            font-size: 3rem;
+            user-select: none;
+        }
+
+        @keyframes swim {
+            0% { transform: translate(-10vw, 0) rotate(0deg); }
+            50% { transform: translate(50vw, 10vh) rotate(5deg); }
+            100% { transform: translate(110vw, -5vh) rotate(-5deg); }
+        }
+
+        .sushi-1 { animation: swim 20s linear infinite; top: 20%; }
+        .sushi-2 { animation: swim 25s linear infinite; top: 45%; animation-delay: -5s; }
+        .sushi-3 { animation: swim 18s linear infinite; top: 70%; animation-delay: -10s; }
+        .sushi-4 { animation: swim 30s linear infinite; top: 10%; animation-delay: -15s; }
+
+        /* 和風の装飾 */
+        .seigaiha {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 30h100V0C83.333 0 66.667 15 50 15S16.667 0 0 0v30z' fill='%23003566'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .kanji-bg {
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.03;
+            font-weight: bold;
+            right: -5%;
+            top: 10%;
+            writing-mode: vertical-rl;
+            color: white;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .cta-button {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: var(--sea-deep);
+        }
+
+        nav a {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景の装飾 -->
+    <div class="kanji-bg">極楽浄土</div>
+    
+    <!-- 浮遊する寿司たち -->
+    <div class="swimming-sushi sushi-1">🍣</div>
+    <div class="swimming-sushi sushi-2">🐟</div>
+    <div class="swimming-sushi sushi-3">🦐</div>
+    <div class="swimming-sushi sushi-4">🍣</div>
+
+    <!-- ナビゲーション -->
+    <nav class="fixed w-full z-50 px-10 py-6 flex justify-between items-center bg-gradient-to-b from-black/50 to-transparent">
+        <div class="text-2xl font-bold tracking-widest text-white">
+            極楽浄土<span class="text-yellow-400">水族館</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+            <a href="#">展示案内</a>
+            <a href="#">お食事（観賞）</a>
+            <a href="#">営業時間</a>
+            <a href="#">アクセス</a>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section class="hero-section text-center">
+        <div class="z-20 px-4">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 tracking-tighter opacity-90 leading-tight">
+                旬が、舞う。<br>
+                <span class="text-3xl md:text-5xl font-light">蒼き夢の生簀へ。</span>
+            </h1>
+            <p class="max-w-2xl mx-auto mb-10 text-lg opacity-80 leading-relaxed">
+                世界初、熟成された「握り」と「切り身」が自由に泳ぎ回る非現実の水族館。<br>
+                深海の静寂の中で、鮮やかなネタの舞をご堪能ください。
+            </p>
+            <a href="#" class="cta-button inline-block text-lg tracking-widest">入館チケットを予約する</a>
+        </div>
+        <div class="seigaiha"></div>
+    </section>
+
+    <!-- 展示紹介 -->
+    <section class="py-24 px-10 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-3xl font-bold mb-4 tracking-widest">主要展示</h2>
+            <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- 展示1 -->
+            <div class="glass-card p-8">
+                <div class="text-4xl mb-6">🌌</div>
+                <h3 class="text-xl font-bold mb-4">大トロの銀河</h3>
+                <p class="text-sm opacity-70 leading-loose">
+                    脂の乗った大トロの群れが、水槽内で流星群のように輝きます。光の屈折が生み出すピンク色の旋律。
+                </p>
+            </div>
+
+            <!-- 展示2 -->
+            <div class="glass-card p-8">
+                <div class="text-4xl mb-6">🎍</div>
+                <h3 class="text-xl font-bold mb-4">熟成・江戸前回廊</h3>
+                <p class="text-sm opacity-70 leading-loose">
+                    赤酢のシャリを背負った伝統的な握りたちが、歴史を感じさせる優雅な動きであなたを誘います。
+                </p>
+            </div>
+
+            <!-- 展示3 -->
+            <div class="glass-card p-8">
+                <div class="text-4xl mb-6">🏮</div>
+                <h3 class="text-xl font-bold mb-4">雲丹と軍艦の深海</h3>
+                <p class="text-sm opacity-70 leading-loose">
+                    暗闇の中に浮かび上がる黄金色の雲丹。海苔の帯をなびかせながら、静かに漂う軍艦たちの神秘。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="py-12 border-t border-white/10 text-center opacity-60">
+        <p class="text-sm tracking-widest">&copy; 2024 極楽浄土水族館 - 魚を愛し、寿司を愛でる。</p>
+        <p class="text-xs mt-2 italic">※当館の展示物は特殊な術式により泳いでおります。お箸の持ち込みはご遠慮ください。</p>
+    </footer>
+
+    <script>
+        // スクロールに応じたパララックス効果などのスクリプトをここに追加可能
+        document.addEventListener('mousemove', (e) => {
+            const sushi = document.querySelectorAll('.swimming-sushi');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            sushi.forEach((item, index) => {
+                const speed = (index + 1) * 20;
+                item.style.transform += ` translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
